@@ -3,6 +3,10 @@ use actix_files as fs;
 use actix_web::{http::header, middleware, web, App, HttpServer};
 use csml_engine::make_migrations;
 use csml_interpreter::csml_logs::init_logger;
+use std::{env, thread, time::Duration};
+use newrelic::{App, NewRelicConfig};
+
+
 
 mod routes;
 
@@ -17,6 +21,12 @@ async fn main() -> std::io::Result<()> {
         Err(_) => "5000".to_owned(),
     };
     println!("CSML Server listening on port {}", server_port);
+
+    // initialize newrelic
+    let license_key =
+    env::var("NEW_RELIC_LICENSE_KEY").unwrap_or_else(|_| "example-license-key".to_string());
+    let app = App::new("my app", &license_key).expect("Could not create app");
+
 
     // make migrations for PgSQL and do nothing for MongoDB and DynamoDB
     match make_migrations() {
