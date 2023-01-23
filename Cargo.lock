@@ -1181,6 +1181,7 @@ dependencies = [
  "futures",
  "json",
  "log",
+ "newrelic",
  "serde",
  "serde_json",
 ]
@@ -2493,6 +2494,22 @@ dependencies = [
  "cc",
  "regex",
 ]
+
+[[package]]
+name = "newrelic"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7ec1eb312ccd33c2d88ff317d59164465a41014ad465ba8a67e2c062343e3a8"
+dependencies = [
+ "log",
+ "newrelic-sys",
+]
+
+[[package]]
+name = "newrelic-sys"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0a9b9030b5f433ac2afb956eeaf89020e07d3cb9b0561cd07f1737c97a4af93a"
 
 [[package]]
 name = "nom"
