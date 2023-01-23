@@ -23,8 +23,7 @@ async fn main() -> std::io::Result<()> {
     println!("CSML Server listening on port {}", server_port);
 
     // initialize newrelic
-    let license_key =
-    env::var("NEW_RELIC_LICENSE_KEY").unwrap_or_else(|_| "example-license-key".to_string());
+    let license_key = env::var("NEW_RELIC_LICENSE_KEY").unwrap_or_else(|_| "example-license-key".to_string());
     let app = App::new("my app", &license_key).expect("Could not create app");
 
 
